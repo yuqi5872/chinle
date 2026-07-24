@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>流水／有效投注中立試算器｜破解「有下注≠有效投注」｜娛樂城觀測站</title>
+<meta name="description" content="輸入存款、優惠加碼、流水倍數，算出你實際需要達成的有效投注總額。同時解釋為什麼和局、對沖投注通常不列入計算，這是玩家最常誤會出金被拒的原因。">
+<link rel="stylesheet" href="/assets/style.css?v=2">
+</head>
+<body>
+<div class="draft-banner">本機草案 · 網域已定案(yuleguance.com) · 尚未部署上線 · 內容僅供內部驗收</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">娛樂城觀測站</a>
+    <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false" onclick="var n=document.getElementById('mainNav'); var open=n.classList.toggle('open'); this.setAttribute('aria-expanded', open); this.innerHTML = open ? '&times;' : '&#9776;';">&#9776;</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="/pages/guide-withdrawal-denial-diagnosis/">出金被拒診斷</a>
+      <a href="/pages/tool-wagering-calculator/">流水試算器</a>
+      <a href="/pages/dispute-database/">品牌爭議查證</a>
+      <a href="/pages/license-check/">牌照查真假</a>
+      <a href="/pages/about/">關於本站</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<article class="wrap-narrow">
+<h1>流水／有效投注中立試算器</h1>
+
+<div class="meta-row">
+  <span class="badge neutral">互動工具</span>
+  <span>更新日期：2026-07-23</span>
+</div>
+
+<div class="tldr">
+  <div class="label">TL;DR</div>
+  <p style="margin:0;">「有下注」不等於「有效投注（洗碼量）」——和局、同局對沖押注多半不計入流水，這是多數平台共同的產業慣例，不是單一平台針對你。這個工具只做加減乘除，不連任何平台、不記錄你輸入的任何資料。</p>
+</div>
+
+<h2>1. 算算看你還差多少</h2>
+<div class="tool-box">
+  <label for="deposit">存款金額（新台幣）</label>
+  <input type="number" id="deposit" placeholder="例如 5000" min="0">
+
+  <label for="bonus">優惠加碼金額（沒有優惠就填 0）</label>
+  <input type="number" id="bonus" placeholder="例如 2000" min="0">
+
+  <label for="multiplier">流水倍數要求（平台條款上會寫，例如「30倍」就填30）</label>
+  <input type="number" id="multiplier" placeholder="例如 30" min="0" step="0.1">
+
+  <label for="done">目前已經投注的「有效投注」累計金額（如果平台後台有顯示）</label>
+  <input type="number" id="done" placeholder="沒有就填 0" min="0" value="0">
+
+  <button class="calc-btn" onclick="calcWagering()">計算</button>
+
+  <div class="result" id="result" style="display:none;"></div>
+</div>
+
+<h2>2. 為什麼算出來的數字可能跟你以為的不一樣</h2>
+<p>這個計算只能算出「條款上寫的門檻」，不能算出你「已經投注的金額」是不是全部都被計入——這正是最多人誤會出金被拒的地方：</p>
+<ul>
+  <li><strong>和局不計入</strong>：百家樂等遊戲中，和局視為無風險（本金退還），該局的有效投注記為 0。</li>
+  <li><strong>同局對沖不計入</strong>：同一局同時押注對立面（例如同時押莊又押閒，或運彩同時買兩邊），多數平台會判定為無實質風險的套利行為，整局不列入洗碼量。</li>
+  <li><strong>不同遊戲類型計算比例不同</strong>：吃角子老虎、真人視訊、體育投注常有不同的洗碼貢獻比例（例如某些遊戲只算 50%），實際比例要看該平台自己公告的條款，本工具無法自動抓取每個平台的條款差異。</li>
+</ul>
+<p>如果自己算出來「應該已經達標」，但平台仍拒絕出金，且客服講不出具體、可查證的理由——回到<a href="/pages/guide-withdrawal-denial-diagnosis/">出金被拒完整診斷樹</a>的 Q4，判斷是否已經是惡意扣留的警訊。</p>
+
+<h2>3. 相關頁面</h2>
+<div class="internal-links">
+  <div class="label">下一步可以看</div>
+  <ul style="margin:0;">
+    <li><a href="/pages/guide-withdrawal-denial-diagnosis/">出金被拒完整診斷樹</a> — 算完流水後的下一步判斷</li>
+    <li><a href="/pages/dispute-database/">品牌爭議查證資料庫</a> — 看已查證過的真實案例</li>
+  </ul>
+</div>
+
+<h2>4. 查證方法與來源</h2>
+<ul class="source-list">
+  <li>和局／對沖不計入流水的產業慣例，交叉參考多個獨立說明頁（法律事務所+產業說明頁），屬於產業普遍規則描述，非單一平台條款引用；實際比例仍以個別平台公告條款為準，本站不代表任何平台背書。</li>
+</ul>
+
+<div class="cta-box">
+  <p>想要完整版「各類遊戲洗碼比例對照表」？</p>
+  <span class="cta-pending">訂閱取得完整版（籌備中）</span>
+  <div class="note">私域訂閱管道（Telegram／LINE OA／電子報）尚未由營運方拍板，此按鈕暫時不可點擊。</div>
+</div>
+
+<div class="disclaimer-box">
+  本工具僅做基本算術，計算結果僅供參考，不代表任何平台的實際核算結果，實際門檻與計算規則以各平台公告條款為準。本站不接受業配、不代收佣金、不放推薦連結。
+</div>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <p>本站為查證與風險教育性質內容，不構成法律或投資建議。</p>
+  <p><a href="/pages/about/">關於本站與查證方法</a></p>
+</footer>
+
+<script>
+function calcWagering() {
+  var deposit = parseFloat(document.getElementById('deposit').value) || 0;
+  var bonus = parseFloat(document.getElementById('bonus').value) || 0;
+  var multiplier = parseFloat(document.getElementById('multiplier').value) || 0;
+  var done = parseFloat(document.getElementById('done').value) || 0;
+
+  var base = deposit + bonus;
+  var target = base * multiplier;
+  var remaining = Math.max(target - done, 0);
+
+  var resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+
+  if (multiplier <= 0) {
+    resultEl.innerHTML = '請填入流水倍數（平台條款上會寫，例如「30倍」）。';
+    return;
+  }
+
+  resultEl.innerHTML =
+    '條款門檻總額：<strong>NT$ ' + target.toLocaleString('zh-Hant-TW') + '</strong>' +
+    '（(存款 NT$' + deposit.toLocaleString('zh-Hant-TW') + ' + 優惠 NT$' + bonus.toLocaleString('zh-Hant-TW') + ') × ' + multiplier + ' 倍）<br><br>' +
+    '扣掉已投注的有效投注後，還差：<strong>NT$ ' + remaining.toLocaleString('zh-Hant-TW') + '</strong><br><br>' +
+    '<span style="font-size:0.85rem;color:var(--ink-soft);">注意：這是「條款門檻」，不是你「已經下注的總額」——和局、對沖投注多半不計入，實際還差多少請以平台後台顯示的有效投注累計為準。</span>';
+}
+</script>
+
+</body>
+</html>
