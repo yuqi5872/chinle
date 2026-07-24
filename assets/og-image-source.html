@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<style>
+@font-face {
+  font-family: 'Noto Serif TC';
+  src: local('Noto Serif TC');
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+  font-family: -apple-system, "PingFang TC", "Noto Sans TC", sans-serif;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(203,159,79,.10), transparent 45%),
+    #16181c;
+  color: #e9e2cf;
+  display: flex;
+  align-items: center;
+  padding: 0 90px;
+  position: relative;
+}
+.brand {
+  position: absolute; top: 48px; left: 90px;
+  font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 30px;
+  letter-spacing: .02em;
+}
+.tag {
+  position: absolute; top: 48px; right: 90px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 15px;
+  color: #cb9f4f; letter-spacing: .04em;
+}
+h1 {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700; font-size: 56px; line-height: 1.4;
+  max-width: 760px;
+}
+.sub {
+  margin-top: 28px; font-size: 22px; color: #a39d89; max-width: 700px; line-height: 1.6;
+}
+.art { position: absolute; right: 70px; bottom: 60px; }
+</style>
+</head>
+<body>
+  <div class="brand">娛樂城觀測站</div>
+  <div class="tag">YULEGUANCE.COM</div>
+  <h1>不告訴你哪一家安全<br>只給你自己判斷所需的證據</h1>
+  <div class="sub">出金被拒診斷樹 · 流水試算器 · 牌照真偽查詢 · 詐騙辨識<br>不接受業配，不放推薦連結</div>
+  <svg class="art" width="230" height="200" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="30" y="60" width="160" height="120" rx="4" transform="rotate(-4 110 120)" fill="#1f2224" stroke="#4d4b3d" stroke-width="2"/>
+    <rect x="46" y="50" width="160" height="120" rx="4" fill="#1f2224" stroke="#4d4b3d" stroke-width="2"/>
+    <line x1="62" y1="78" x2="180" y2="78" stroke="#35362f" stroke-width="3"/>
+    <line x1="62" y1="96" x2="180" y2="96" stroke="#35362f" stroke-width="3"/>
+    <line x1="62" y1="114" x2="150" y2="114" stroke="#35362f" stroke-width="3"/>
+    <g transform="rotate(-18 100 150)">
+      <rect x="70" y="138" width="60" height="26" rx="3" fill="none" stroke="#e2685a" stroke-width="2.5"/>
+      <text x="100" y="156" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#e2685a" letter-spacing="1">待查證</text>
+    </g>
+    <circle cx="195" cy="150" r="26" fill="none" stroke="#cb9f4f" stroke-width="4"/>
+    <line x1="214" y1="169" x2="235" y2="190" stroke="#cb9f4f" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+</body>
+</html>
