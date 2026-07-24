@@ -222,6 +222,49 @@ li { margin-bottom: 6px; }
   color: var(--accent); text-transform: uppercase; margin-bottom: 8px;
 }
 
+/* ---------- 首頁hero：卷宗夾+放大鏡插畫 ---------- */
+.hero { background: var(--paper-2); border-bottom: 1px solid var(--line); }
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+  padding-top: clamp(28px, 5vw, 48px);
+  padding-bottom: clamp(28px, 5vw, 48px);
+}
+.hero-text { flex: 1 1 420px; min-width: 0; }
+.hero-art { flex: 0 0 auto; width: clamp(140px, 22vw, 220px); height: auto; }
+@media (max-width: 768px) {
+  .hero-inner { flex-direction: column; align-items: flex-start; }
+  .hero-art { width: 150px; align-self: center; }
+}
+
+.card-icon { width: 40px; height: 40px; color: var(--accent); margin-bottom: 10px; }
+
+/* ---------- 本頁快速跳轉：ADHD友善,先給地圖再給內文 ---------- */
+.jump-nav {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 16px 20px;
+  margin: 0 0 32px;
+}
+.jump-nav .label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: .08em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 10px;
+}
+.jump-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.jump-nav li { margin: 0; }
+.jump-nav a {
+  display: inline-flex; align-items: center; min-height: 36px;
+  padding: 6px 14px; border: 1px solid var(--line-strong); border-radius: 999px;
+  font-size: 0.86rem; text-decoration: none; color: var(--ink-soft);
+  background: var(--paper-2);
+}
+.jump-nav a:hover { color: var(--accent); border-color: var(--accent); }
+
+h2[id] { scroll-margin-top: 90px; }
+
 /* ---------- 卡片網格：檔案夾標籤感 ---------- */
 .card-grid {
   display: grid;
