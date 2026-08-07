@@ -1,29 +1,39 @@
 # 娛樂觀察站 robots.txt
-# 政策：全面開放。所有遵守 robots.txt 的爬蟲（含 AI 搜尋引用與模型訓練）一律允許。
+# 政策（2026-08-07 站長決定）：**開放引用，不開放訓練**。
+#   - 引用／檢索（AI 回答時即時抓取並標註來源）→ 允許，這是本站存在的目的
+#   - 模型訓練（把內容收進訓練資料集）→ 不允許
 # 每個 user-agent 在本檔案中只出現一次，不存在互相矛盾的指令。
 #
+# 分類依據：各家官方文件對自家爬蟲用途的說明
+#   OAI-SearchBot／ChatGPT-User      OpenAI 的搜尋索引與使用者即時抓取 → 引用
+#   GPTBot                            OpenAI 的訓練資料抓取           → 訓練
+#   Claude-SearchBot／Claude-User    Anthropic 的搜尋與使用者抓取     → 引用
+#   ClaudeBot                         Anthropic 的一般性抓取（含訓練）→ 訓練
+#   PerplexityBot／Perplexity-User   Perplexity 的檢索               → 引用
+#   Google-Extended                   控制 Gemini 訓練與 grounding    → 訓練
+#     （注意：Google AI Overview 走的是一般 Googlebot，不受這條影響，
+#       所以擋掉 Google-Extended 不會讓本站從 AI Overview 消失）
+#   bingbot／Applebot                 一般搜尋索引（Copilot 引用來源）→ 引用
+#   CCBot／Bytespider／Amazonbot／
+#   Applebot-Extended／meta-externalagent                            → 訓練
+#
 # 維護提醒：如果線上 https://yuleguance.com/robots.txt 在本檔案內容之前
-# 多出一段 "BEGIN Cloudflare Managed content" 的 Disallow 區塊，代表
-# Cloudflare AI Crawl Control 的「受管理的 robots.txt」被重新開啟了，
-# 那段設定會覆蓋掉本檔案的意圖，需要到 Cloudflare 後台關閉。
+# 多出一段 Disallow 區塊（Content-Signal: ...ai-train=no,use=reference），
+# 那是 Cloudflare AI Crawl Control 的「受管理的 robots.txt」被開啟了，
+# 它會插在本檔案前面並覆蓋本檔案的意圖，需要到 Cloudflare 後台關閉。
+# 2026-08-07 實測：線上 138 行 = Cloudflare 注入 61 行 + 本檔案 77 行。
 # 最後確認日期：2026-08-07
 
 User-agent: *
-Content-Signal: search=yes,ai-input=yes,ai-train=yes
+Content-Signal: search=yes,ai-input=yes,ai-train=no
 Allow: /
 
-# --- OpenAI ---
-User-agent: GPTBot
-Allow: /
+# ── 允許：AI 引用與搜尋檢索 ──────────────────────────────
 
 User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
-Allow: /
-
-# --- Anthropic ---
-User-agent: ClaudeBot
 Allow: /
 
 User-agent: Claude-SearchBot
@@ -32,46 +42,42 @@ Allow: /
 User-agent: Claude-User
 Allow: /
 
-# --- Google ---
-User-agent: Google-Extended
-Allow: /
-
-# --- Perplexity ---
 User-agent: PerplexityBot
 Allow: /
 
 User-agent: Perplexity-User
 Allow: /
 
-# --- Microsoft / Bing ---
 User-agent: bingbot
 Allow: /
 
-# --- Apple ---
 User-agent: Applebot
 Allow: /
 
-User-agent: Applebot-Extended
-Allow: /
+# ── 不允許：模型訓練 ────────────────────────────────────
 
-# --- Meta ---
-User-agent: meta-externalagent
-Allow: /
+User-agent: GPTBot
+Disallow: /
 
-# --- Amazon ---
-User-agent: Amazonbot
-Allow: /
+User-agent: ClaudeBot
+Disallow: /
 
-# --- ByteDance ---
-User-agent: Bytespider
-Allow: /
+User-agent: Google-Extended
+Disallow: /
 
-# --- Common Crawl（多數開源模型的語料來源）---
 User-agent: CCBot
-Allow: /
+Disallow: /
 
-# --- Cloudflare ---
-User-agent: CloudflareBrowserRenderingCrawler
-Allow: /
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
 
 Sitemap: https://yuleguance.com/sitemap.xml
