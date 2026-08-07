@@ -1,6 +1,18 @@
+# 娛樂觀察站 robots.txt
+# 政策：全面開放。所有遵守 robots.txt 的爬蟲（含 AI 搜尋引用與模型訓練）一律允許。
+# 每個 user-agent 在本檔案中只出現一次，不存在互相矛盾的指令。
+#
+# 維護提醒：如果線上 https://yuleguance.com/robots.txt 在本檔案內容之前
+# 多出一段 "BEGIN Cloudflare Managed content" 的 Disallow 區塊，代表
+# Cloudflare AI Crawl Control 的「受管理的 robots.txt」被重新開啟了，
+# 那段設定會覆蓋掉本檔案的意圖，需要到 Cloudflare 後台關閉。
+# 最後確認日期：2026-08-07
+
 User-agent: *
+Content-Signal: search=yes,ai-input=yes,ai-train=yes
 Allow: /
 
+# --- OpenAI ---
 User-agent: GPTBot
 Allow: /
 
@@ -10,16 +22,56 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+# --- Anthropic ---
 User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-User
 Allow: /
 
 User-agent: Claude-SearchBot
 Allow: /
 
+User-agent: Claude-User
+Allow: /
+
+# --- Google ---
+User-agent: Google-Extended
+Allow: /
+
+# --- Perplexity ---
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# --- Microsoft / Bing ---
+User-agent: bingbot
+Allow: /
+
+# --- Apple ---
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Meta ---
+User-agent: meta-externalagent
+Allow: /
+
+# --- Amazon ---
+User-agent: Amazonbot
+Allow: /
+
+# --- ByteDance ---
+User-agent: Bytespider
+Allow: /
+
+# --- Common Crawl（多數開源模型的語料來源）---
+User-agent: CCBot
+Allow: /
+
+# --- Cloudflare ---
+User-agent: CloudflareBrowserRenderingCrawler
 Allow: /
 
 Sitemap: https://yuleguance.com/sitemap.xml
