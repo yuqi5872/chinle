@@ -235,7 +235,7 @@ li { margin-bottom: 6px; }
 .hero-art { flex: 0 0 auto; width: clamp(140px, 22vw, 220px); height: auto; }
 @media (max-width: 768px) {
   .hero-inner { flex-direction: column; align-items: flex-start; }
-  .hero-art { width: 150px; align-self: center; }
+  .hero-art { width: 150px; height: 127px; align-self: center; }
 }
 
 .card-icon { width: 40px; height: 40px; color: var(--accent); margin-bottom: 10px; }
@@ -411,3 +411,68 @@ button.calc-btn:hover { background: var(--accent-2); }
 @media (prefers-reduced-motion: reduce) {
   .card { transition: none; }
 }
+
+/* ---------- 對照矩陣（平台宣稱 vs 公開紀錄）：像稽核底稿 ---------- */
+.stamp {
+  display: inline-block; padding: 2px 9px; margin: 1px 0;
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: .03em;
+  border: 1.5px solid currentColor; border-radius: 3px;
+}
+.stamp.ok { background: var(--safe-bg); color: var(--safe); }
+.stamp.na { background: var(--neutral-stamp-bg); color: var(--neutral-stamp); border-style: dashed; }
+.stamp.conflict { background: var(--danger-bg); color: var(--danger); }
+.stamp.note { background: var(--warn-bg); color: var(--warn); }
+
+table.matrix { min-width: 760px; font-size: 0.88rem; }
+table.matrix th:first-child, table.matrix td:first-child { position: sticky; left: 0; background: var(--card); z-index: 1; }
+table.matrix td:first-child { font-weight: 700; font-family: var(--font-display); }
+table.matrix td small { display: block; color: var(--ink-soft); font-size: 0.78rem; font-family: var(--font-mono); margin-top: 3px; }
+
+.kv { display: grid; grid-template-columns: minmax(7.5em, 12em) 1fr; gap: 0; border: 1px solid var(--line); border-radius: 3px; background: var(--card); margin: 0 0 22px; box-shadow: var(--shadow-file); }
+.kv > div { padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .03em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper-2); }
+.kv .src { display: block; font-size: .76rem; color: var(--ink-soft); font-family: var(--font-mono); margin-top: 4px; word-break: break-all; }
+
+.brand-block { border: 1px solid var(--line); border-left: 4px solid var(--line-strong); border-radius: 2px; background: var(--card); padding: 18px 20px; margin: 18px 0; box-shadow: var(--shadow-file); }
+.brand-block h3 { margin: 0 0 6px; }
+.brand-block .brand-meta { font-family: var(--font-mono); font-size: .76rem; color: var(--ink-soft); margin-bottom: 10px; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.brand-block ul { margin-bottom: 10px; }
+.brand-block .more { font-size: .9rem; }
+
+.hub-banner { background: var(--card); border: 1px solid var(--line); border-left: 6px solid var(--accent); border-radius: 3px; padding: 20px 22px; margin: 0 0 8px; box-shadow: var(--shadow-file); display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.hub-banner .hb-text { flex: 1 1 360px; }
+.hub-banner .hb-text h2 { margin: 0 0 6px; padding: 0; border: 0; font-size: 1.2rem; }
+.hub-banner .hb-text h2::before { content: none; }
+.hub-banner p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+.hub-banner .hb-link { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 20px; border: 1.5px solid var(--accent); border-radius: 3px; color: var(--accent); text-decoration: none; font-weight: 700; font-family: var(--font-mono); font-size: .88rem; }
+.hub-banner .hb-link:hover { background: var(--accent); color: var(--card); }
+
+.faq-item { border-bottom: 1px solid var(--line); padding: 14px 0; }
+.faq-item h3 { margin: 0 0 6px; font-size: 1rem; }
+.faq-item p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+
+.site-footer .foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; margin: 0 0 12px; }
+.site-footer .foot-links a { text-decoration: none; }
+.site-footer .foot-links a:hover { text-decoration: underline; }
+
+/* 手機：表格一列變一張卡（不左右滑） */
+@media (max-width: 768px) {
+  .t-scroll.stack { overflow: visible; border: none; }
+  table.stack { min-width: 0; display: block; }
+  table.stack thead { display: none; }
+  table.stack tbody, table.stack tr { display: block; }
+  table.stack tr { border: 1px solid var(--line); border-radius: 3px; background: var(--card); margin: 0 0 12px; box-shadow: var(--shadow-file); }
+  table.stack td { display: grid; grid-template-columns: 6.5em 1fr; gap: 10px; padding: 9px 12px; border-bottom: 1px solid var(--line); position: static !important; background: transparent !important; }
+  table.stack tr:nth-child(even) td { background: transparent; }
+  table.stack td:first-child { background: var(--paper-2) !important; }
+  table.stack td::before { content: attr(data-l); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); padding-top: 2px; }
+  .kv { grid-template-columns: 1fr; }
+  .kv > div { border-bottom: 1px solid var(--line); }
+  .kv > div:nth-child(odd) { border-bottom: none; padding-bottom: 2px; }
+  .kv > div:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .kv > div:last-child { border-bottom: none; }
+}
+
+/* 長網址不撐破手機版 */
+.source-list, table td, .kv > div, code, .brand-block, .faq-item { overflow-wrap: anywhere; }
