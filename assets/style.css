@@ -476,3 +476,9 @@ table.matrix td small { display: block; color: var(--ink-soft); font-size: 0.78r
 
 /* 長網址不撐破手機版 */
 .source-list, table td, .kv > div, code, .brand-block, .faq-item { overflow-wrap: anywhere; }
+
+.hb-brands{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
+.hb-brands-label{font-size:13px;opacity:.7;margin-bottom:6px}
+.hb-brands-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px}
+.hb-brands-list a{font-size:14px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+@media(max-width:600px){.hb-brands-list{gap:4px 10px}.hb-brands-list a{font-size:13px}}
