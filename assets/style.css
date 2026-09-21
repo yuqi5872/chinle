@@ -482,3 +482,17 @@ table.matrix td small { display: block; color: var(--ink-soft); font-size: 0.78r
 .hb-brands-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px}
 .hb-brands-list a{font-size:14px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
 @media(max-width:600px){.hb-brands-list{gap:4px 10px}.hb-brands-list a{font-size:13px}}
+
+/* 三欄對照表（官方宣稱／公開紀錄／查不到）：印章後面接敘述文字時留白 */
+table.matrix td .stamp { margin-right: 6px; }
+table.matrix td small { word-break: normal; overflow-wrap: anywhere; }
+/* 首頁逐家區塊：H2 帶出的 brand-block 貼著標題 */
+h2 + .brand-block { margin-top: 10px; }
+.brand-block li { margin-bottom: 8px; }
+
+/* 手機：對照矩陣的欄位名改放在值的上方（格內含 <small> 時，左右兩欄會錯位） */
+@media (max-width: 768px) {
+  table.matrix.stack td { display: block; }
+  table.matrix.stack td::before { display: block; margin-bottom: 5px; }
+  table.matrix.stack td small { margin-top: 4px; }
+}
